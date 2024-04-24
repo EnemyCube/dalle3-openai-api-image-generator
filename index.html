@@ -29,120 +29,55 @@
     <div class="card mb-4">
         <div class="card-body">
             <div class="form-group">
-                <label for="api" class="text-muted">OpenAI API Key</label>
-                <input type="text" id="api" class="form-control mb-2" placeholder="Enter your OpenAI API key here">
-                <label for="text">Image prompt</label>
-                <textarea id="text" class="form-control mb-2"
-                    placeholder="Enter a short description of the image or a keyword"></textarea>
-                <label for="sizeSelect">Image Size</label>
-                <select id="sizeSelect" class="form-control mb-2"></select>
-                <label for="styleSelect">Style</label>
-                <select id="styleSelect" class="form-control mb-2"></select>
-                <label for="qualitySelect">Quality</label>
-                <select id="qualitySelect" class="form-control mb-2"></select>
-            </div>
-            <button id="btn" class="btn btn-primary float-right">Generate</button>
-            <div id="loading" class="d-none text-center">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="sr-only">Loading...</span>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">🗝️</span>
+                    <div class="form-floating">
+                        <input type="text" type="password" class="form-control" id="apiKey" placeholder="sk-xxxxxxx">
+                        <label for="apiKey">OpenAI API Key</label>
+                    </div>
+                </div>
+
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Enter a prompt" id="text"
+                        style="height: 100px"></textarea>
+                    <label for="text">Enter a prompt</label>
+                </div>
+
+                <div class="btn-group">
+                    <div class="form-floating me-3 mt-3">
+                        <select id="sizeSelect" class="form-select" aria-label="Image size">
+                            <option value="1024x1024" selected>1024x1024</option>
+                            <option value="1792x1024">1792x1024</option>
+                            <option value="1024x1792">1024x1792</option>
+                        </select>
+                        <label for="floatingSelect">Image Size</label>
+                    </div>
+
+                    <div class="form-floating me-3 mt-3">
+                        <select id="styleSelect" class="form-select" aria-label="Image style">
+                            <option value="vivid" selected>Vivid</option>
+                            <option value="natural">Natural</option>
+                        </select>
+                        <label for="floatingSelect">Image Style</label>
+                    </div>
+
+                    <div class="form-floating mt-3">
+                        <select id="qualitySelect" class="form-select" aria-label="Image Quality">
+                            <option value="standard" selected>Standard</option>
+                            <option value="hd">HD</option>
+                        </select>
+                        <label for="floatingSelect">Image Quality</label>
+                    </div>
                 </div>
             </div>
+
+            <button id="btn" class="btn btn-primary mt-3">Generate</button>
         </div>
     </div>
     <div id="image" class="row"></div>
     <footer>
     </footer>
 </body>
-<script>
-    $(document).ready(function () {
-        const sizeOptions = ["1024x1024", "1792x1024", "1024x1792"];
-        sizeOptions.forEach(size => {
-            $('#sizeSelect').append($('<option>', { value: size, text: size }));
-        });
-
-        const styleOptions = ["vivid", "natural"];
-        const styleDisplayText = {
-            vivid: "Vivid",
-            natural: "Natural"
-        };
-
-        styleOptions.forEach(style => {
-            $('#styleSelect').append($('<option>', {
-                value: style,
-                text: styleDisplayText[style] || style // Fallback to 'style' if no mapping is found
-            }));
-        });
-
-        const qualityOptions = ["standard", "hd"];
-        const qualityDisplayText = {
-            standard: "Standard Quality",
-            hd: "HD Quality"
-        };
-
-        qualityOptions.forEach(quality => {
-            $('#qualitySelect').append($('<option>', {
-                value: quality,
-                text: qualityDisplayText[quality] || quality // Fallback to 'quality' if no mapping is found
-            }));
-        });
-
-        let imageSize = $('#sizeSelect').val();
-        let style = $('#styleSelect').val();
-        let quality = $('#qualitySelect').val();
-        let apiKey = '';
-
-        $('#btn').click(function () {
-            if ($('#api').val().trim() === '') {
-                alert('Enter your OpenAI API key');
-                return;
-            }
-
-            if ($('#text').val().trim() === '') {
-                alert('Please enter a value');
-                return;
-            }
-
-            $('#loading').removeClass('d-none');
-            $('#btn').prop('disabled', true);
-
-            $.ajax({
-                url: "https://api.openai.com/v1/images/generations",
-                type: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + $('#api').val().trim()
-                },
-                data: JSON.stringify({
-                    model: "dall-e-3",
-                    prompt: $('#text').val(),
-                    n: 1,
-                    size: imageSize,
-                    style: style,
-                    quality: quality,
-                }),
-                success: function (data) {
-                    $('#loading').addClass('d-none');
-                    $('#btn').prop('disabled', false);
-
-                    data.data.forEach(item => {
-                        const img = $('<img>', {
-                            src: item.url,
-                            alt: "image",
-                            class: "img-fluid col-md-4 mb-2"
-                        });
-
-                        $('#image').append(img);
-                    });
-                },
-                error: function (error) {
-                    console.log(error);
-                    $('#loading').addClass('d-none');
-                    $('#btn').prop('disabled', false);
-                    alert(error);
-                }
-            });
-        });
-    });
-</script>
 
 </html>
