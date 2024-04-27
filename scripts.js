@@ -6,13 +6,23 @@ $(document).ready(function () {
 
     $('#btn').click(function () {
         if ($('#apiKey').val().trim() === '') {
-            alert('Enter your OpenAI API key');
+            $('#apiKey').addClass('is-invalid')
+            $('#apiKeyForm').addClass('is-invalid')
             return;
         }
+        else {
+            $('#apiKey').removeClass('is-invalid')
+            $('#apiKeyForm').removeClass('is-invalid')
+        }
 
-        if ($('#text').val().trim() === '') {
-            alert('Please enter a value');
+        if ($('#prompt').val().trim() === '') {
+            $('#prompt').addClass('is-invalid')
+            $('#promptForm').addClass('is-invalid')
             return;
+        }
+        else {
+            $('#prompt').removeClass('is-invalid')
+            $('#promptForm').removeClass('is-invalid')
         }
 
         $('#btn').prop('disabled', true);
@@ -27,7 +37,7 @@ $(document).ready(function () {
             },
             data: JSON.stringify({
                 model: "dall-e-3",
-                prompt: $('#text').val(),
+                prompt: $('#prompt').val(),
                 n: 1,
                 size: imageSize,
                 style: style,
@@ -47,11 +57,12 @@ $(document).ready(function () {
                     $('#image').append(img);
                 });
             },
-            error: function (error) {
-                console.log(error);
+            error: function (xhr, status, error) {
+                const err = JSON.parse(xhr.responseText);
                 $('#btn').prop('disabled', false);
                 $('#btn').html('Generate');
-                alert(error);
+                $('#errorText').text(err.error.message);
+                $("#errorToast").toast("show");
             }
         });
     });
