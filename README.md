@@ -1,4 +1,4 @@
-![image](https://github.com/EnemyCube/dalle3-openai-api-image-generator/assets/46894291/8a5363c2-2b32-429f-a0b6-f3f397fc3e1a)
+![image](https://github.com/EnemyCube/dalle3-openai-api-image-generator/assets/46894291/c7d24179-a292-41b2-aa9f-6b5bb33201ee)
 
 # Run Locally
 1. If you haven't already, get yourself an [OpenAI API key](https://www.howtogeek.com/885918/how-to-get-an-openai-api-key/).
