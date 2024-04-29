@@ -17,6 +17,17 @@
 </head>
 
 <body>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="errorToast" class="toast fade hide align-items-center text-bg-danger border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Error</strong>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div id="errorText" class="toast-body">An error has occurred.</div>
+        </div>
+    </div>
+
     <div class="container mt-5" style="width: 50%;">
         <div class="text-center mb-4">
             <h1>DALL·E-3 Image Generator</h1>
@@ -116,7 +127,7 @@
                             generation quality to 'hd' does increase the cost per image, as well as often increasing the
                             time it takes to generate by ~10 seconds or so.
                             </p>
-                            
+
                             <p>
                                 More information, along with examples, can be found <a
                                     href="https://cookbook.openai.com/articles/what_is_new_with_dalle_3">here</a>.
