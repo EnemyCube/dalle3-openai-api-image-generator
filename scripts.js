@@ -1,10 +1,10 @@
 $(document).ready(function () {
-    let imageSize = $('#sizeSelect').val();
-    let style = $('#styleSelect').val();
-    let quality = $('#qualitySelect').val();
-    let apiKey = '';
-
     $('#btn').click(function () {
+        let imageSize = $('#sizeSelect').val();
+        let imageStyle = $('#styleSelect').val();
+        let imageQuality = $('#qualitySelect').val();
+        let apiKey = '';
+        
         if ($('#apiKey').val().trim() === '') {
             $('#apiKey').addClass('is-invalid')
             $('#apiKeyForm').addClass('is-invalid')
@@ -40,8 +40,8 @@ $(document).ready(function () {
                 prompt: $('#prompt').val(),
                 n: 1,
                 size: imageSize,
-                style: style,
-                quality: quality,
+                style: imageStyle,
+                quality: imageQuality,
             }),
             success: function (data) {
                 $('#btn').prop('disabled', false);
