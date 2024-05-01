@@ -9,7 +9,7 @@
 6. Generate!
 
 # To-do
-1. Add descriptions for each setting, according to [the documentation](https://cookbook.openai.com/articles/what_is_new_with_dalle_3).
+1. ~~Add descriptions for each setting, according to [the documentation](https://cookbook.openai.com/articles/what_is_new_with_dalle_3).~~
 2. Have the API key save to the user's computer.
 3. ~~Better error handling.~~
 4. Add the ability to download images from the UI.
