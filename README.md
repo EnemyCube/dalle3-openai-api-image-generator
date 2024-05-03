@@ -1,4 +1,4 @@
-![image](https://github.com/EnemyCube/dalle3-openai-api-image-generator/assets/46894291/c7d24179-a292-41b2-aa9f-6b5bb33201ee)
+![image](https://github.com/EnemyCube/dalle3-openai-api-image-generator/assets/46894291/42f2ee60-9c95-4b94-898d-f87f04e2ff2f)
 
 # Run Locally
 1. If you haven't already, get yourself an [OpenAI API key](https://www.howtogeek.com/885918/how-to-get-an-openai-api-key/).
@@ -12,4 +12,4 @@
 1. ~~Add descriptions for each setting, according to [the documentation](https://cookbook.openai.com/articles/what_is_new_with_dalle_3).~~
 2. Have the API key save to the user's computer.
 3. ~~Better error handling.~~
-4. Add the ability to download images from the UI.
+4. ~~Add the ability to download/expand images from the UI.~~
