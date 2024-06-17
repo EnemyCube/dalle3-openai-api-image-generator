@@ -8,8 +8,11 @@
 5. Enter your prompt and adjust the settings to your liking.
 6. Generate!
 
+Note: At the moment, images are only stored on OpenAI's servers for an hour. You'll need to download the images before they expire if you want to keep them.
+
 # To-do
 1. ~~Add descriptions for each setting, according to [the documentation](https://cookbook.openai.com/articles/what_is_new_with_dalle_3).~~
 2. Have the API key save to the user's computer.
-3. ~~Better error handling.~~
-4. ~~Add the ability to download/expand images from the UI.~~
+3. Find a way to circumvent OpenAI server-side expiration.
+4. ~~Better error handling.~~
+5. ~~Add the ability to download/expand images from the UI.~~
