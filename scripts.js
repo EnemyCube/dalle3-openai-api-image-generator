@@ -41,9 +41,10 @@ $(document).ready(function () {
                 size: imageSize,
                 style: imageStyle,
                 quality: imageQuality,
+                response_format: "url"
             }),
             beforeSend: function () {
-                $('#imageList').append(`
+                $('#imageList').prepend(`
                 <div id="placeholderCard" class="card m-3">
                     <div class="d-flex justify-content-end">
                     <button id="imageDown" class="btn btn-sm btn-secondary position-absolute m-2 col-1 placeholder disabled" aria-disabled="true" type="button"></button>
